@@ -17,7 +17,7 @@ import messageroutes from './routes/message.route.js'
 import {
      connectDb } from './lib/db.js';
 app.use("/api/auth",authroutes)
-app.use("/api/message",messageroutes)
+app.use("/api/messages",messageroutes)
 
 app.listen(PORT,()=>{
     console.log('server is running on port '+ PORT)
