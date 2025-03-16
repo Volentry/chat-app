@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 dotenv.config()
 const PORT = process.env.PORT
-const app = express();
+import {app,server} from './lib/socket.js'
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
@@ -16,10 +16,11 @@ import messageroutes from './routes/message.route.js'
  import authroutes from "./routes/auth.route.js";
 import {
      connectDb } from './lib/db.js';
+
 app.use("/api/auth",authroutes)
 app.use("/api/messages",messageroutes)
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     console.log('server is running on port '+ PORT)
     connectDb()
 })
